@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"\nconst fs = require\\('fs'\\);\n// SVGをPNGの代わりに使うため、SVGをコピーして icon-192.png / icon-512.png の代替SVGを作成\n// 実際のビルドはvite-plugin-pwaが処理する（開発時はSVGで代用）\nconst svg = fs.readFileSync\\('public/icons/icon.svg', 'utf-8'\\);\nfs.writeFileSync\\('public/icons/icon-192.png', svg\\);\nfs.writeFileSync\\('public/icons/icon-512.png', svg\\);\nconsole.log\\('icon placeholders created'\\);\n\")",
+      "Bash(npm run build 2>&1)"
+    ]
+  }
+}
