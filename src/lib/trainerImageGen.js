@@ -27,15 +27,17 @@ function pickN(arr, n) {
 //   - シンプルで明るいジム背景
 // ─────────────────────────────────────────────────────────────
 const ART_STYLE = `
-Upper body portrait illustration of a gym personal trainer character in a modern anime style similar to Japanese RPG trainer character art.
+A single anime-style illustration of ONE gym personal trainer character standing in a gym. Japanese RPG trainer character art style.
 
-CRITICAL ORIENTATION: The character is ALWAYS standing upright, ALWAYS facing forward (front-facing or very slight 3/4 angle). NEVER lying down, NEVER tilted, NEVER rotated sideways. The head is at the TOP of the image. RIGHT-SIDE UP at all times.
+CRITICAL - SINGLE CHARACTER ONLY: The image contains EXACTLY ONE character. NO split panels. NO side-by-side layouts. NO multiple views. NO before/after. NO dual images. NO portrait inset. ONE person, ONE scene, ONE frame only.
 
-CRITICAL COMPOSITION: The image MUST show the full head (with clear space above the top of the hair) down to at least the chest/pectoral area. The top of the head must NOT be cut off. Leave visible margin above the hair. Frame from mid-chest up to above the head.
+CRITICAL ORIENTATION: The character is ALWAYS standing upright, ALWAYS facing forward (front-facing or very slight 3/4 angle). NEVER lying down, NEVER tilted, NEVER rotated sideways. RIGHT-SIDE UP at all times.
 
-CRITICAL BACKGROUND: The background MUST be a bright, clean, modern gym interior with white or very light warm-gray walls and soft natural daylight. Think clean fitness studio with large windows and pale walls. NO dark backgrounds, NO gradient backgrounds, NO dramatic shadows, NO vivid or saturated background colors, NO moody lighting. Background must look like a real bright gym — almost white-gray with subtle, very faint gym elements (treadmill silhouette, mirror, rack) blurred far in the background.
+CRITICAL COMPOSITION: The character is centered in the image. Show the full head (with clear space above the hair) down to mid-thigh level. The top of the head must NOT be cut off. Leave visible margin above the hair. Bottom of frame cuts at mid-thigh. The character fills the vertical center of the image naturally.
 
-Art style: Clean bold outlines with medium-thick black linework. Flat cel-shading with 2-3 tone levels per color, no painterly gradients, no soft blending. Bright clean saturated character colors with high readability against the light background.
+CRITICAL BACKGROUND: A bright, clean, modern gym interior fully behind the character. Light warm-gray or white walls, large windows with soft natural daylight, faint blurred gym equipment (treadmills, mirrors, weight racks) visible in the background. NO dark backgrounds, NO plain gradients, NO blank white background, NO dramatic shadows, NO vivid saturated backgrounds. Must look like a real bright gym environment.
+
+Art style: Clean bold outlines with medium-thick black linework. Flat cel-shading with 2-3 tone levels per color, no painterly gradients, no soft blending. Bright clean character colors.
 `.trim()
 
 // ─────────────────────────────────────────────────────────────
@@ -271,7 +273,7 @@ Accessories: ${acc1} and ${acc2}.
 Arm/pose: ${pose}.
 Expression: ${expression}.
 
-FINAL REMINDER: Character is UPRIGHT, FACING FORWARD. Full head MUST be visible with space above the hair — do NOT cut off the top of the head. Show from chest up to above the head. Bright light gym background. Professional gym trainer anime character, clean flat cel-shading.
+FINAL REMINDER: ONE single character only — NO split panels, NO multiple views, NO dual images. Character is UPRIGHT, FACING FORWARD, CENTERED. Full head visible with space above the hair. Show from head down to mid-thigh. Bright gym interior background behind the character. Professional gym trainer anime character, clean flat cel-shading.
 `.trim()
 }
 
@@ -290,7 +292,7 @@ async function generateImageBase64(prompt) {
       prompt,
       n:               1,
       size:            '1024x1024',     // 正方形（上半身ポートレート用）
-      quality:         'hd',
+      quality:         'standard',
       style:           'vivid',
       response_format: 'b64_json',
     }),
