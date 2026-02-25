@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useAuthStore } from '../stores/authStore'
 import { useDashboardStore } from '../stores/dashboardStore'
 import { supabase } from '../lib/supabase'
@@ -347,18 +348,20 @@ export default function RecordPage() {
     totalPoints, submitting, addWeightRecord, fetchDashboard,
   } = useDashboardStore()
 
+  const [searchParams] = useSearchParams()
   const [todayMeals, setTodayMeals]     = useState([])
   const [feedback, setFeedback]         = useState(null)
   const [loadingMeals, setLoadingMeals] = useState(true)
   const [activeMealTab, setActiveMealTab] = useState('breakfast')
 
-  const today = new Date().toISOString().split('T')[0]
+  // URLパラメータに日付があればその日付を使用（日付ストリップから遷移）
+  const today = searchParams.get('date') ?? new Date().toISOString().split('T')[0]
 
   useEffect(() => {
     if (!user) return
     if (!userTrainer) fetchDashboard(user.id, profile)
     fetchTodayMeals()
-  }, [user?.id])
+  }, [user?.id, today])
 
   // ─── 今日の食事取得 ──────────────────────────────
   const fetchTodayMeals = async () => {
